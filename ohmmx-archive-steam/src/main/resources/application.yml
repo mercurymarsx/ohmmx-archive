@@ -1,3 +1,6 @@
+server:
+  port: 13500
+
 spring:
   application:
     name: OHMMX-STEAM
