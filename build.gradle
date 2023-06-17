@@ -70,6 +70,9 @@ subprojects {
 
 			implementation "com.zaxxer:HikariCP:$zaxxerHikariCpVersion"
 
+			// JDK1.8需要单独引入
+			implementation "org.apache.commons:commons-lang3:$commonsLang3Version"
+
 			runtimeOnly 'com.mysql:mysql-connector-j'
 
 			testImplementation 'org.springframework.boot:spring-boot-starter-test'
