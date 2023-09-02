@@ -1,5 +1,6 @@
 package com.ohmmx.common.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.EntityListeners;
@@ -11,7 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
-public abstract class BaseTimestampEntity extends BaseEntity {
+public abstract class BaseTimestampEntity<K extends Serializable> extends AbstractEntity<K> {
 	@CreatedDate
 	protected Date createTimestamp;
 	@LastModifiedDate

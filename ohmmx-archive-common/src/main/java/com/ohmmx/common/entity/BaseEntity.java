@@ -1,23 +1,19 @@
 package com.ohmmx.common.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 
-import org.hibernate.annotations.GenericGenerator;
+public interface BaseEntity<K extends Serializable> extends Serializable {
 
-@MappedSuperclass
-public abstract class BaseEntity {
-	@Id
-	@GenericGenerator(name = "idGen", strategy = "com.ohmmx.common.id.IdGenerator")
-	@GeneratedValue(generator = "idGen")
-	protected String id;
+	public K getId();
 
-	public String getId() {
-		return id;
-	}
+	public void setId(K id);
 
-	public void setId(String id) {
-		this.id = id;
-	}
+	@Override
+	public String toString();
+
+	@Override
+	public int hashCode();
+
+	@Override
+	public boolean equals(Object target);
 }

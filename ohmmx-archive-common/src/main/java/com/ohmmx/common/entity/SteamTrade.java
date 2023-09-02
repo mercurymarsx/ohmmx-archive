@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -12,13 +14,28 @@ import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.hibernate.annotations.GenericGenerator;
 
 import com.ohmmx.common.entity.column.SteamTradeFlagEnum;
 import com.ohmmx.common.entity.column.SteamTradeTypeEnum;
 
 @Entity
 @Table(name = "STEAM_TRADE")
-public class SteamTrade extends BaseEntity {
+public class SteamTrade {
+
+	@Id
+	@GenericGenerator(name = "idGen", strategy = "com.ohmmx.common.id.IdGenerator")
+	@GeneratedValue(generator = "idGen")
+	protected String id;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	@NotNull
 	@Size(max = 16)
 	private String appid;
